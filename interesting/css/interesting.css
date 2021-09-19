@@ -1544,6 +1544,7 @@ a:hover {
 .commentform .commentbox_title .comment_icon {
     width: 16px;
     height: 16px;
+    line-height: 9px;
     border: 1px solid #eef2f8;
     border-radius: 3px;
     background-color: #fff;
@@ -4659,7 +4660,7 @@ body.modelercy .esa-catalog-contents ul li {
 }
 .desc_img {
     /* float: left!important; */
-    
+
     width: 100% !important;
     max-width: 99% !important;
     margin: 10px 0px !important;
@@ -4716,7 +4717,7 @@ div.commentform textarea .catListTitle {
 }
 ::selection {
     /*  background: none; */
-    
+
     background: #f45656;
     color: #ffffff;
 }
