@@ -1,6 +1,6 @@
 # 介绍
 
-本博客主题改版自 https://github.com/YJLAugus/cnblogs-theme-simple-color
+本主题改版自 https://github.com/YJLAugus/cnblogs-theme-simple-color
 
 ### ①功能简介
 
@@ -13,6 +13,7 @@
 
 ![image-20210919181316173](images.assets/image-20210919181316173.png)
 
+[案例预览](https://www.cnblogs.com/xu-ux/p/12693839.html)
 
 
 ## 主题部署
