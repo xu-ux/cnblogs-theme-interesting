@@ -1,0 +1,203 @@
+<!-- 头像 -->
+<div class="av"> -->
+    <img class="but" itemprop="image" src="https://images.cnblogs.com/cnblogs_com/xu-ux/1864779/o_2010160949432020.jpg" style="cursor:pointer;" width="100%" alt="小浣熊" />
+</div>
+
+<!-- 头像start -->
+<script>
+    $(document).ready(function() {
+        document.getElementById("favicon").setAttribute("href", "https://blog-static.cnblogs.com/files/xu-ux/favicon.ico");
+    });
+</script>
+<!-- 头像end -->
+
+<!--内容区start-->
+<script type="text/javascript">
+    $.silence({
+        profile: {
+            enable: true,
+            avatar: 'https://images.cnblogs.com/cnblogs_com/xu-ux/1864779/o_2010160949432020.jpg',
+            favicon: 'https://blog-static.cnblogs.com/files/xu-ux/favicon.ico',
+        },
+        catalog: {
+            enable: true,
+            move: true,
+            index: true,
+            level1: 'h2',
+            level2: 'h3',
+            level3: 'h4',
+        },
+        signature: {
+            enable: true,
+            home: 'https://xu-ux.cnblogs.com/',
+            license: 'CC BY 4.0',
+            link: 'https://creativecommons.org/licenses/by/4.0'
+        },
+        reward: {
+            enable: false,
+            title: '『一键投喂 软糖/蛋糕/布丁/牛奶/冰阔乐！』',
+            wechat: 'https://www.cnblogs.com/images/cnblogs_com/yjlblog/1280680/o_wx_zfx.png',
+            alipay: 'https://www.cnblogs.com/images/cnblogs_com/yjlblog/1280680/o_zfb_zfx.png',
+        },
+        github: {
+            enable: false,
+            color: '#fff',
+            fill: null,
+            link: 'https://github.com/xu_uxo/'
+        }
+    });
+</script>
+<!--内容区end-->
+
+<!--主题切换 放在侧边栏start-->
+<script>
+    $('.fa.fa-cog.fa-spin.fa-lg').click(function() {
+        let that = $(this);
+        that.closest('.float-btn-group').toggleClass('open');
+        setTimeout(() => {
+            that.closest('.float-btn-group').toggleClass('open', false);
+        }, 3000);
+    });
+</script>
+<!--主题切换 放在侧边栏end-->
+
+<!--主题切换放在侧边栏start-->
+<script>
+    function switchNightMode() {
+        var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+        if (night == '0') {
+            document.body.classList.add('night');
+            document.cookie = "night=1;path=/"
+            console.log('夜间模式开启');
+        } else {
+            document.body.classList.remove('night');
+            document.cookie = "night=0;path=/"
+            console.log('夜间模式关闭');
+        }
+    }
+
+    (function() {
+        if (document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") === '') {
+            if (new Date().getHours() > 22 || new Date().getHours() < 6) {
+                document.body.classList.add('night');
+                document.cookie = "night=1;path=/";
+                console.log('夜间模式开启');
+            } else {
+                document.body.classList.remove('night');
+                document.cookie = "night=0;path=/";
+                console.log('夜间模式关闭');
+            }
+        } else {
+            var night = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+            if (night == '0') {
+                document.body.classList.remove('night');
+            } else if (night == '1') {
+                document.body.classList.add('night');
+            }
+        }
+    })();
+</script>
+
+<script>
+    function switchModelMode() {
+        var model = document.cookie.replace(/(?:(?:^|.*;\s*)model\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+        if (model == '0') {
+            document.body.classList.add('model');
+            document.cookie = "model=1;path=/"
+            console.log('皮肤模式开启');
+        } else {
+            document.body.classList.remove('model');
+            document.cookie = "model=0;path=/"
+            console.log('皮肤模式关闭');
+        }
+    }
+
+
+    function switchModelErcyMode() {
+        var modelercy = document.cookie.replace(/(?:(?:^|.*;\s*)modelercy\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+        if (modelercy == '0') {
+            document.body.classList.add('modelercy');
+            document.cookie = "modelercy=1;path=/"
+            console.log('皮肤模式开启');
+        } else {
+            document.body.classList.remove('modelercy');
+            document.cookie = "modelercy=0;path=/"
+            console.log('皮肤模式关闭');
+        }
+    }
+
+    (function() {
+
+        var modelercy = document.cookie.replace(/(?:(?:^|.*;\s*)modelercy\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+        if (modelercy == '0') {
+            document.body.classList.remove('modelercy');
+        } else if (modelercy == '1') {
+            document.body.classList.add('modelercy');
+        }
+
+    })();
+
+    (function() {
+        var model = document.cookie.replace(/(?:(?:^|.*;\s*)model\s*\=\s*([^;]*).*$)|^.*$/, "$1") || '0';
+        if (model == '0') {
+            document.body.classList.remove('model');
+        } else if (model == '1') {
+            document.body.classList.add('model');
+        }
+
+    })();
+</script>
+<!--主题切换放在侧边栏end-->
+
+
+<!-- 头像 -->
+<!-- 头像搞怪音乐 -->
+<script>
+    $(document).ready(function() {
+        var voice = document.getElementById('voice'); //获取到audio元素
+        $('.but').click(function() { //点击文字事件
+            if (voice.paused) { //判断音乐是否在播放中，暂停状态
+                voice.play(); //音乐播放
+                $('.but').text('暂停'); //切换文字
+
+            } else { //播放状态
+                voice.pause(); //音乐停止
+                $('.but').text('播放'); //切换文字
+            }
+        });
+    });
+</script>
+<!-- 头像搞怪音乐 -->
+
+<!--随笔发布信息-->
+<script>
+    if ($("#topics") != null) {
+        $("#cnblogs_post_body").before("<p class='publishinfo'><img src='https://img.shields.io/badge/Post-" + $("#post-date").text().replace(/\-/g, "--").replace(/\ /g, "%20").replace(/\:/g, "%3A") + "-blue'/>" +
+
+            "<img src='https://img.shields.io/badge/Read-" + $("#post_view_count").text() + "-red'/>" +
+
+            "<img src='https://img.shields.io/badge/Comment-" + $("#post_comment_count").text() + "-green'/><br/>" +
+            $("#BlogPostCategory").html() + $("#EntryTag").html() + "</p>")
+    }
+</script>
+
+<!--首页排版调整-->
+<script>
+    for (i = 0; i <= $(".desc_img").length; i++) {
+        $(".desc_img").eq(i).insertBefore($(".postTitle").eq(i));
+        $(".postDesc").eq(i).insertAfter($(".day .postTitle").eq(i));
+    }
+    for (i = 0; i <= $(".entrylistPostSummary").length; i++) {
+        $(".desc_img").eq(i).insertBefore($(".entrylistPosttitle").eq(i));
+        $(".entrylistItemPostDesc").eq(i).insertAfter($(".entrylistPosttitle").eq(i));
+    }
+</script>
+
+
+<!-- 鼠标点击特效 -->
+<script src="https://blog-static.cnblogs.com/files/xu-ux/cursor-effects.js"></script>
+<!-- 鼠标点击特效end -->
+
+<!-- 随机打字机js-->
+<script src="https://blog-static.cnblogs.com/files/xu-ux/roll.js"></script>
+<!-- 随机打字机js end-->
