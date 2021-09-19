@@ -1,88 +1,92 @@
 "use strict";
-var _createClass = function() {
+var _createClass = function () {
     function o(e, t) {
         for (var a = 0; a < t.length; a++) {
             var o = t[a];
             o.enumerable = o.enumerable || !1,
                 o.configurable = !0,
-                "value" in o && (o.writable = !0),
+            "value" in o && (o.writable = !0),
                 Object.defineProperty(e, o.key, o)
         }
     }
-    return function(e, t, a) {
+
+    return function (e, t, a) {
         return t && o(e.prototype, t),
-            a && o(e, a),
+        a && o(e, a),
             e
     }
 }();
 
 function _classCallCheck(e, t) {
     if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
-}!
-function(p) {
-    p.extend({
-        silence: function(e) {
-            var t = new a;
-            t.init(e)
-        }
-    });
-    var a = function() {
-        function e() {
-            _classCallCheck(this, e),
-                this.defaluts = {
-                    profile: {
-                        enable: !1,
-                        avatar: null,
-                        favicon: null
+}
+
+!
+    function (p) {
+        p.extend({
+            silence: function (e) {
+                var t = new a;
+                t.init(e)
+            }
+        });
+        var a = function () {
+            function e() {
+                _classCallCheck(this, e),
+                    this.defaluts = {
+                        profile: {
+                            enable: !1,
+                            avatar: null,
+                            favicon: null
+                        },
+                        catalog: {
+                            enable: !1,
+                            move: !0,
+                            index: !0,
+                            level1: "h2",
+                            level2: "h3",
+                            level3: "h4"
+                        },
+                        signature: {
+                            author: null,
+                            enable: !1,
+                            home: "https://www.cnblogs.com",
+                            license: "CC BY 4.0",
+                            link: "https://creativecommons.org/licenses/by/4.0"
+                        },
+                        reward: {
+                            enable: !1,
+                            title: "我是猴子派来收钱的",
+                            wechat: null,
+                            alipay: null
+                        },
+                        github: {
+                            enable: !1,
+                            color: "#fff",
+                            fill: null,
+                            link: null
+                        }
                     },
-                    catalog: {
-                        enable: !1,
-                        move: !0,
-                        index: !0,
-                        level1: "h2",
-                        level2: "h3",
-                        level3: "h4"
-                    },
-                    signature: {
-                        author: null,
-                        enable: !1,
-                        home: "https://www.cnblogs.com",
-                        license: "CC BY 4.0",
-                        link: "https://creativecommons.org/licenses/by/4.0"
-                    },
-                    reward: {
-                        enable: !1,
-                        title: "我是猴子派来收钱的",
-                        wechat: null,
-                        alipay: null
-                    },
-                    github: {
-                        enable: !1,
-                        color: "#fff",
-                        fill: null,
-                        link: null
-                    }
-                },
-                this.version = "1.0.0"
-        }
-        return _createClass(e, [{
-                    key: "init",
-                    value: function(e) {
-                        e && p.extend(!0, this.defaluts, e),
-                            this.buildCustomElements(),
-                            this.buildGithubCorner(),
-                            this.buildCopyright(),
-                            this.buildBloggerProfile(),
-                            this.isPostPage ? (this.goIntoReadingMode(), this.buildPostCatalog(), this.buildPostCodeCopyBtns(), this.buildPostSignature(), this.buildPostFavoriteBtn(), this.buildPostRewardBtn(), this.buildToolbar(), this.buildPostCommentAvatars()) : this.goIntoNormalMode()
-                    }
-                },
+                    this.version = "1.0.0"
+            }
+
+            return _createClass(e, [{
+                key: "init",
+                value: function (e) {
+                    e && p.extend(!0, this.defaluts, e),
+                        this.buildCustomElements(),
+                        this.buildGithubCorner(),
+                        this.buildCopyright(),
+                        this.buildBloggerProfile(),
+                        this.isPostPage ? (this.goIntoReadingMode(), this.buildPostCatalog(), this.buildPostCodeCopyBtns(), this.buildPostSignature(), this.buildPostFavoriteBtn(), this.buildPostRewardBtn(), this.buildToolbar(), this.buildPostCommentAvatars()) : this.goIntoNormalMode()
+                }
+            },
                 {
                     key: "showMessage",
-                    value: function(e) {
+                    value: function (e) {
                         p("body").prepend('<div class="esa-layer"><span class="esa-layer-content">' + e + "</span></div>");
                         var t = p(".esa-layer");
                         t.fadeIn(200),
-                            setTimeout(function() {
+                            setTimeout(function () {
                                     t.remove()
                                 },
                                 2e3)
@@ -90,11 +94,11 @@ function(p) {
                 },
                 {
                     key: "goIntoReadingMode",
-                    value: function() {
+                    value: function () {
                         var t = this,
                             a = 0,
                             e = p(window);
-                        767 < e.width() && e.scroll(function() {
+                        767 < e.width() && e.scroll(function () {
                             var e = this.scrollY;
                             a < e ? p(t.cnblogs.header).slideUp("fast") : p(t.cnblogs.header).slideDown("fast"),
                                 a = this.scrollY
@@ -103,7 +107,7 @@ function(p) {
                 },
                 {
                     key: "goIntoNormalMode",
-                    value: function() {
+                    value: function () {
                         767 < p(window).width() && (p(this.cnblogs.forFlow).css({
                             marginLeft: "22em"
                         }), p(this.cnblogs.sideBar).fadeIn(500))
@@ -112,7 +116,7 @@ function(p) {
                 // 顶部菜单设置
                 {
                     key: "buildCustomElements",
-                    value: function() {
+                    value: function () {
                         var e = this,
                             t = p(this.cnblogs.blogTitle).find("h1 a").html(),
                             a = p(this.cnblogs.publicProfile).find("a:eq(0)").html(),
@@ -122,12 +126,12 @@ function(p) {
                             n.find("li").eq(2).after(`<li><a id="blog_nav_tags" class="menu" href="https://www.cnblogs.com/${currentBlogApp}/p">归档</a></li>`),
                             n.find("li").eq(3).after(`<li><a id="blog_nav_tags" class="menu" href="https://github.com/xu-ux">Github</a></li>`),
                             p.each(n.find("li"),
-                                function(e, t) {
+                                function (e, t) {
                                     p(t).append("<i></i>")
                                 }),
                             p("body").prepend('<div class="esa-mobile-menu"></div>'),
                             p(".esa-mobile-menu").on("click",
-                                function() {
+                                function () {
                                     p(e.cnblogs.navigator).fadeToggle(200)
                                 })
                     }
@@ -135,7 +139,7 @@ function(p) {
                 // 底部Copyright
                 {
                     key: "buildCopyright",
-                    value: function() {
+                    value: function () {
                         var e = `<div><a href="https://www.cnblogs.com" target="_blank">Cnblogs Drive</a> | 🕤 2019 - ${new Date().getFullYear()} 
                         | <a href="https://github.com/xu-ux/cnblogs-theme-interesting" target="_blank">Theme By Interesting</a></div> 
                         <div><span id="rollingColorfulFont"></span></div>`;
@@ -145,7 +149,7 @@ function(p) {
                 },
                 {
                     key: "buildPostSignature",
-                    value: function() {
+                    value: function () {
                         var e = this.defaluts.signature;
                         if (e.enable) {
                             var t = p(this.cnblogs.postTitle).attr("href"),
@@ -157,9 +161,9 @@ function(p) {
                 },
                 {
                     key: "buildPostCommentAvatars",
-                    value: function() {
+                    value: function () {
                         var s = this,
-                            e = function() {
+                            e = function () {
                                 p(s.cnblogs.postCommentBody).before("<div class='esa-comment-avatar'><a target='_blank'><img /></a></div>");
                                 for (var e = p(s.cnblogs.feedbackContent), t = 0; t < e.length; t++) {
                                     var a = "https://pic.cnblogs.com/face/sample_face.gif",
@@ -172,9 +176,9 @@ function(p) {
                             };
                         if (p(this.cnblogs.postCommentBody).length) e();
                         else var t = 1,
-                            a = setInterval(function() {
+                            a = setInterval(function () {
                                     p(s.cnblogs.postCommentBody).length && (clearInterval(a), e()),
-                                        10 == t && clearInterval(a),
+                                    10 == t && clearInterval(a),
                                         t++
                                 },
                                 500)
@@ -182,29 +186,29 @@ function(p) {
                 },
                 {
                     key: "buildPostRewardBtn",
-                    value: function() {
+                    value: function () {
                         var e = this,
                             t = this.defaluts.reward;
                         if (t.enable) {
                             if (!t.wechat && !t.alipay) return void this.showMessage("Error：微信或支付宝赞赏二维码请至少配置一个");
                             var a = '<div class="esa-reward">\n                <div class="esa-reward-close">✕</div>\n                <h2>"' + t.title + '"</h2>\n                <div class="esa-reward-container">';
                             t.wechat && (a += '<div class="wechat"><img src="' + t.wechat + '"></div>'),
-                                t.alipay && (a += '<div class="alipay"><img src="' + t.alipay + '"></div>'),
+                            t.alipay && (a += '<div class="alipay"><img src="' + t.alipay + '"></div>'),
                                 a += "</div></div>",
                                 p("body").append(a),
                                 p(".esa-reward-close").on("click",
-                                    function() {
+                                    function () {
                                         p(".esa-reward").fadeOut()
                                     });
-                            var o = function() {
+                            var o = function () {
                                 p(e.cnblogs.postDigg).prepend('<div class="reward"><span class="rewardnum" id="reward_count"></span></div>'),
                                     p(e.cnblogs.postDigg).find(".reward").on("click",
-                                        function() {
+                                        function () {
                                             p(".esa-reward").fadeIn()
                                         })
                             };
                             if (p(this.cnblogs.postDigg).length) o();
-                            else var n = setInterval(function() {
+                            else var n = setInterval(function () {
                                     p(e.cnblogs.postDigg).length && (clearInterval(n), o())
                                 },
                                 200)
@@ -213,13 +217,13 @@ function(p) {
                 },
                 {
                     key: "buildPostFavoriteBtn",
-                    value: function() {
+                    value: function () {
                         var e = this,
-                            t = function() {
+                            t = function () {
                                 p(e.cnblogs.postDigg).prepend('<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>')
                             };
                         if (p(this.cnblogs.postDigg).length) t();
-                        else var a = setInterval(function() {
+                        else var a = setInterval(function () {
                                 p(e.cnblogs.postDigg).length && (clearInterval(a), t())
                             },
                             200)
@@ -227,7 +231,7 @@ function(p) {
                 },
                 {
                     key: "buildPostCatalog",
-                    value: function() {
+                    value: function () {
                         var l = this.defaluts.catalog;
                         if (l.enable) {
                             var e = [l.level1, l.level2, l.level3],
@@ -240,61 +244,61 @@ function(p) {
                                 u = "<ul>",
                                 f = (window.crypto || window.msCrypto).getRandomValues(new Uint32Array(t.length));
                             p.each(t,
-                                    function(e, t) {
-                                        var a = p(t)[0].tagName.toLowerCase(),
-                                            o = "",
-                                            n = p(t).html(),
-                                            s = n;
-                                        if (l.index) a === l.level1 ? (d = c = 0, o = '<span class="level1">' + ++r + ". </span>") : a === l.level2 ? (d = 0, o = '<span class="level2">' + r + "." + ++c + ". </span>") : a === l.level3 && (o = '<span class="level3">' + r + "." + c + "." + ++d + ". </span>");
-                                        else switch (a) {
-                                            case l.level1:
-                                                n = '<span class="level1">' + n + "</span>";
-                                                break;
-                                            case l.level2:
-                                                n = '<span class="level2">' + n + "</span>";
-                                                break;
-                                            case l.level3:
-                                                n = '<span class="level3">' + n + "</span>"
-                                        }
-                                        var i = f[e];
-                                        u += '<li class="li_' + a + '" title="' + s + '">\n                            <i class="' + i + '" ></i><a class="esa-anchor-link">' + (o + n) + "</a>\n                        </li>",
-                                            p(t).attr("id", "" + i).html("<span>" + n + '</span><a href="#' + i + '" class="esa-anchor">#</a>').hover(function() {
-                                                    p(t).find(".esa-anchor").css("opacity", 1)
-                                                },
-                                                function() {
-                                                    p(t).find(".esa-anchor").css("opacity", 0)
-                                                })
-                                    }),
+                                function (e, t) {
+                                    var a = p(t)[0].tagName.toLowerCase(),
+                                        o = "",
+                                        n = p(t).html(),
+                                        s = n;
+                                    if (l.index) a === l.level1 ? (d = c = 0, o = '<span class="level1">' + ++r + ". </span>") : a === l.level2 ? (d = 0, o = '<span class="level2">' + r + "." + ++c + ". </span>") : a === l.level3 && (o = '<span class="level3">' + r + "." + c + "." + ++d + ". </span>");
+                                    else switch (a) {
+                                        case l.level1:
+                                            n = '<span class="level1">' + n + "</span>";
+                                            break;
+                                        case l.level2:
+                                            n = '<span class="level2">' + n + "</span>";
+                                            break;
+                                        case l.level3:
+                                            n = '<span class="level3">' + n + "</span>"
+                                    }
+                                    var i = f[e];
+                                    u += '<li class="li_' + a + '" title="' + s + '">\n                            <i class="' + i + '" ></i><a class="esa-anchor-link">' + (o + n) + "</a>\n                        </li>",
+                                        p(t).attr("id", "" + i).html("<span>" + n + '</span><a href="#' + i + '" class="esa-anchor">#</a>').hover(function () {
+                                                p(t).find(".esa-anchor").css("opacity", 1)
+                                            },
+                                            function () {
+                                                p(t).find(".esa-anchor").css("opacity", 0)
+                                            })
+                                }),
                                 u += "</ul>",
                                 a.find(".esa-catalog-contents").append(u),
                                 a.appendTo("body");
                             var o = p(".esa-catalog-contents");
                             if (o.fadeIn(), p(".esa-anchor-link").on("click",
-                                    function() {
-                                        var e = p("#" + p(this).prev("i").attr("class")).offset().top;
-                                        p("html, body").animate({
-                                                scrollTop: e
-                                            },
-                                            300)
-                                    }), p(".esa-catalog-close").on("click",
-                                    function() {
-                                        o.hide()
-                                    }), l.move) {
+                                function () {
+                                    var e = p("#" + p(this).prev("i").attr("class")).offset().top;
+                                    p("html, body").animate({
+                                            scrollTop: e
+                                        },
+                                        300)
+                                }), p(".esa-catalog-close").on("click",
+                                function () {
+                                    o.hide()
+                                }), l.move) {
                                 var i = {
                                     start: !1,
                                     pois: [0, 0]
                                 };
                                 p(".esa-catalog-title").on("mousedown",
-                                        function(e) {
-                                            e.preventDefault(),
-                                                i.start = !0;
-                                            var t = p(".esa-catalog").position(),
-                                                a = e.clientX - parseFloat(t.left),
-                                                o = e.clientY - parseFloat(t.top);
-                                            i.pois = [a, o]
-                                        }),
+                                    function (e) {
+                                        e.preventDefault(),
+                                            i.start = !0;
+                                        var t = p(".esa-catalog").position(),
+                                            a = e.clientX - parseFloat(t.left),
+                                            o = e.clientY - parseFloat(t.top);
+                                        i.pois = [a, o]
+                                    }),
                                     p(document).on("mousemove",
-                                        function(e) {
+                                        function (e) {
                                             if (i.start) {
                                                 var t = e.clientX - i.pois[0],
                                                     a = e.clientY - i.pois[1],
@@ -305,9 +309,9 @@ function(p) {
                                                 var n = p(window).width() - p(".esa-catalog").outerWidth() + i.stX,
                                                     s = p(window).height() - p(".esa-catalog").outerHeight() + i.stY;
                                                 t < i.stX && (t = i.stX),
-                                                    n < t && (t = n),
-                                                    a < i.stY && (a = i.stY),
-                                                    s < a && (a = s),
+                                                n < t && (t = n),
+                                                a < i.stY && (a = i.stY),
+                                                s < a && (a = s),
                                                     p(".esa-catalog").css({
                                                         left: t,
                                                         top: a,
@@ -315,7 +319,7 @@ function(p) {
                                                     })
                                             }
                                         }).on("mouseup",
-                                        function(e) {
+                                        function (e) {
                                             i.start && (i.start = !1)
                                         })
                             }
@@ -324,7 +328,7 @@ function(p) {
                 },
                 {
                     key: "buildGithubCorner",
-                    value: function() {
+                    value: function () {
                         var e = this.defaluts.github;
                         if (e.enable) {
                             var t = e.fill ? "fill:" + e.fill + ";" : "";
@@ -334,25 +338,25 @@ function(p) {
                 },
                 {
                     key: "buildPostCodeCopyBtns",
-                    value: function() {
+                    value: function () {
                         var t = this,
                             e = p(".postBody .cnblogs-markdown").find("pre");
                         if (!e.length) return !1;
                         p.each(e,
-                                function(e, t) {
-                                    p(t).find("code").attr("id", "copy_target_" + e),
-                                        p(t).prepend('<div class="esa-clipboard-button" data-clipboard-target="#copy_target_' + e + '" title="复制代码">Copy</div>')
-                                }),
+                            function (e, t) {
+                                p(t).find("code").attr("id", "copy_target_" + e),
+                                    p(t).prepend('<div class="esa-clipboard-button" data-clipboard-target="#copy_target_' + e + '" title="复制代码">Copy</div>')
+                            }),
                             p.getScript("https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js",
-                                function() {
+                                function () {
                                     var e = new ClipboardJS(".esa-clipboard-button");
                                     e.on("success",
-                                            function(e) {
-                                                t.showMessage("代码已复制到粘贴板中"),
-                                                    e.clearSelection()
-                                            }),
+                                        function (e) {
+                                            t.showMessage("代码已复制到粘贴板中"),
+                                                e.clearSelection()
+                                        }),
                                         e.on("error",
-                                            function(e) {
+                                            function (e) {
                                                 t.showMessage("代码复制失败")
                                             })
                                 })
@@ -360,7 +364,7 @@ function(p) {
                 },
                 {
                     key: "buildToolbar",
-                    value: function() {
+                    value: function () {
                         var a = this,
                             e = this.defaluts.catalog;
                         p("body").append('<div class="esa-toolbar">\n                <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>\n                <button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>\n                <button class="esa-toolbar-follow"><div class="tips">关注博主</div></button>\n            </div>');
@@ -368,33 +372,33 @@ function(p) {
                             o = p(".esa-toolbar-contents"),
                             n = p(".esa-toolbar-follow");
                         e.enable ? o.on("click",
-                                function() {
-                                    var e = p(".esa-catalog-contents");
-                                    "none" == e.css("display") ? e.fadeIn() : e.hide()
-                                }).hover(function() {
-                                    o.find(".tips").show()
-                                },
-                                function() {
-                                    o.find(".tips").hide()
-                                }) : o.remove(),
+                            function () {
+                                var e = p(".esa-catalog-contents");
+                                "none" == e.css("display") ? e.fadeIn() : e.hide()
+                            }).hover(function () {
+                                o.find(".tips").show()
+                            },
+                            function () {
+                                o.find(".tips").hide()
+                            }) : o.remove(),
                             t.on("click",
-                                function() {
+                                function () {
                                     p(window).scrollTop(0)
-                                }).hover(function() {
+                                }).hover(function () {
                                     t.find(".tips").show()
                                 },
-                                function() {
+                                function () {
                                     t.find(".tips").hide()
                                 }),
-                            p(window).scroll(function() {
+                            p(window).scroll(function () {
                                 200 < this.scrollY ? t.fadeIn() : t.fadeOut()
                             }),
                             n.on("click",
-                                function() {
+                                function () {
                                     loadLink(location.protocol + "https://blog-static.cnblogs.com/files/xu-ux/ui-dialog.css",
-                                        function() {
+                                        function () {
                                             loadScript(location.protocol + "https://blog-static.cnblogs.com/files/xu-ux/dialog-min.js",
-                                                function() {
+                                                function () {
                                                     if (!isLogined) return login();
                                                     if (c_has_follwed) return a.showMessage("您已经关注过该博主");
                                                     var t = cb_blogUserGuid;
@@ -404,31 +408,31 @@ function(p) {
                                                         dataType: "text",
                                                         type: "post",
                                                         contentType: "application/json; charset=utf-8",
-                                                        success: function(e) {
+                                                        success: function (e) {
                                                             "未登录" == e ? login() : "关注成功" == e && followByGroup(t, !0),
                                                                 a.showMessage(e)
                                                         }
                                                     })
                                                 })
                                         })
-                                }).hover(function() {
+                                }).hover(function () {
                                     n.find(".tips").show()
                                 },
-                                function() {
+                                function () {
                                     n.find(".tips").hide()
                                 })
                     }
                 },
                 {
                     key: "buildBloggerProfile",
-                    value: function() {
+                    value: function () {
                         var e = this.defaluts.profile;
                         e.enable && (!this.isPostPage && e.avatar && p(this.cnblogs.sideBarMain).prepend('<img class="esa-profile-avatar" src="' + e.avatar + '" />'), e.favicon && p("head").append('<link rel="shortcut icon" href="' + e.favicon + '" type="image/x-icon" />'))
                     }
                 },
                 {
                     key: "cnblogs",
-                    get: function() {
+                    get: function () {
                         return {
                             header: "#header",
                             blogTitle: "#blogTitle",
@@ -451,11 +455,30 @@ function(p) {
                 },
                 {
                     key: "isPostPage",
-                    get: function() {
+                    get: function () {
                         return 0 < p(this.cnblogs.postDetail).length
                     }
                 }
             ]),
-            e
-    }()
-}(jQuery);
+                e
+        }()
+    }(jQuery);
+
+
+var windowTop = 0;
+$(window).scroll(function () {
+    let winHeight = $(window).scrollTop();
+    // 向下滑动
+    if (winHeight > windowTop){
+        if (winHeight > 65) {
+            $('.model-3').css('display', 'none')
+        } else {
+            $('.model-3').css('display', 'block')
+        }
+        windowTop = winHeight;
+        // 向上滑动
+    } else {
+        $('.model-3').css('display', 'block')
+        windowTop = winHeight;
+    }
+})
